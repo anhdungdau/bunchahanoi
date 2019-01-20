@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style.css" media="all">
-    <title>BunChaCoDao</title>
+    <title>BunChaHaNoi</title>
 
   </head>
 
@@ -65,6 +65,10 @@
           </ul>
         </div>
         <div id="content_area">
+          <!-- <div id="shopping_cart">
+            <span style="float:right">Welcome Guest!</span>
+
+          </div> -->
           <div id="products_box">
             <?php
               getPro();
