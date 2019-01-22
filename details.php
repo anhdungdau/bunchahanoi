@@ -50,7 +50,6 @@
       </div> <!-- Navigation ends-->
 
       <div class="content_wrapper">
-
         <div id="sidebar">
           <div id="sidebar_title">Categories</div>
           <ul id="cats">
@@ -65,7 +64,6 @@
             ?>
           </ul>
         </div>
-
         <div id="content_area">
 
           <div id="shopping_cart">
@@ -75,16 +73,36 @@
           </div>
 
           <div id="products_box">
-            <?php getPro(); ?>
-            <?php getCatPro(); ?>
+            <?php
+              if (isset($_GET['pro_id'])) {
+              $product_id = $_GET['pro_id'];
+              $get_pro = "SELECT * FROM products where product_id='$product_id'";
+              $run_pro = mysqli_query($con, $get_pro);
+                while ($row_pro = mysqli_fetch_array($run_pro)) {
+                  $pro_id = $row_pro['product_id'];
+                  $pro_title = $row_pro['product_title'];
+                  $pro_price = $row_pro['product_price'];
+                  $pro_desc = $row_pro['product_desc'];
+                  $pro_image = $row_pro['product_image'];
+                  echo "
+                  <div id='single_product'>
+                    <h3>$pro_title</h3>
+                    <img src='admin_area/product_images/$pro_image' width='500' height='450' />
+                    <p><b>$$pro_price</b></p>
+                    <p>$pro_desc</p>
+                    <a href='index.php' style='float:left;'>Go Back</a>
+                    <a href='index.php?pro_id=$pro_id'><button style='float:right'>Order now</button></a>
+                  </div>
+                  ";
+                }
+              }
+            ?>
           </div>
-
         </div>
 
         <div id="footer">
           <h4 style="text-align:center; padding-top: 15px;">&copy;2019 by Dung Bean</h4>
         </div>
-
       </div>
 
     </div> <!-- Main container ends-->
