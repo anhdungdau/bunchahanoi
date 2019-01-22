@@ -43,7 +43,6 @@
         <img src='admin_area/product_images/$pro_image' width='200' height='180' />
         <p><b>$$pro_price</b></p>
         <a href='details.php?pro_id=$pro_id' style='float:left;'>More info</a>
-
         <a href='index.php?pro_id=$pro_id'><button style='float:right'>Order now</button></a>
       </div>
       ";

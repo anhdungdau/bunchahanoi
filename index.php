@@ -65,10 +65,13 @@
           </ul>
         </div>
         <div id="content_area">
-          <!-- <div id="shopping_cart">
-            <span style="float:right">Welcome Guest!</span>
+          <div id="shopping_cart">
+            <span style="float:right; font-size: 18px; padding: 5px; line-height: 40px;">
+              Welcome Guest! <b style="color: lightgreen">Shopping Cart </b> Total dishes: Total Price: <a href="cart.php" style="color:lightgreen;">Go to Cart</a>
+            </span>
 
-          </div> -->
+
+          </div>
           <div id="products_box">
             <?php
               getPro();
