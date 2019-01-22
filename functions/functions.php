@@ -59,7 +59,7 @@
       global $con;
       $get_cat_pro = "SELECT * FROM products WHERE product_cat = '$cat_id'";
       $run_cat_pro = mysqli_query($con, $get_cat_pro);
-      
+
         while ($row_cat_pro = mysqli_fetch_array($run_cat_pro)) {
           $pro_id = $row_cat_pro['product_id'];
           $pro_cat = $row_cat_pro['product_cat'];
@@ -79,5 +79,32 @@
         }
       }
     }
+
+    function getMeatPro() {
+      if (isset($_GET['meat'])) {
+        $meat_id = $_GET['meat'];
+        global $con;
+        $get_meat_pro = "SELECT * FROM products WHERE product_meat = '$meat_id'";
+        $run_meat_pro = mysqli_query($con, $get_meat_pro);
+
+          while ($row_meat_pro = mysqli_fetch_array($run_meat_pro)) {
+            $pro_id = $row_meat_pro['product_id'];
+            $pro_cat = $row_meat_pro['product_cat'];
+            $pro_meat = $row_meat_pro['product_meat'];
+            $pro_title = $row_meat_pro['product_title'];
+            $pro_price = $row_meat_pro['product_price'];
+            $pro_desc = $row_meat_pro['product_desc'];
+            $pro_image = $row_meat_pro['product_image'];
+            echo "
+            <div id='single_product'><h3>$pro_title</h3>
+              <img src='admin_area/product_images/$pro_image' width='200' height='180' />
+              <p><b>$$pro_price</b></p>
+              <a href='details.php?pro_id=$pro_id' style='float:left;'>More info</a>
+              <a href='index.php?pro_id=$pro_id'><button style='float:right'>Order now</button></a>
+            </div>
+            ";
+          }
+        }
+      }
 
 ?>
