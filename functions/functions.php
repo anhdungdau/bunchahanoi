@@ -6,6 +6,75 @@
     echo "Fail to connect to mysql: ".mysqli_connect_error();
   }
 
+  function getIp() {
+    $ip = $_SERVER['REMOTE_ADDR'];
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    }
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+    return $ip;
+  }
+
+  //Create cart
+  function cart() {
+    if (isset($_GET['add_cart'])) {
+      global $con;
+      $ip = getIp();
+      $pro_id = $_GET['add_cart'];
+      $check_pro = "SELECT * FROM cart WHERE ip_add = '$ip' AND p_id = '$pro_id'";
+      $run_check = mysqli_query($con, $check_pro);
+      if (mysqli_num_rows($run_check)) {
+        echo "";
+      }
+      else {
+        $insert_pro = "INSERT into cart(p_id,ip_add) VALUES ('$pro_id','$ip')";
+        $run_pro = mysqli_query($con, $insert_pro);
+        echo "<script>window.open('index.php','_self')</script>";
+      }
+    }
+  }
+
+  //Show all items in Cart
+  function total_items() {
+    if (isset($_GET['add_cart'])) {
+      global $con;
+      $ip = getIp();
+      $get_items = "SELECT * FROM cart WHERE ip_add = '$ip'";
+      $run_items = mysqli_query($con, $get_items);
+      $count_items = mysqli_num_rows($run_items);
+    }
+    else {
+      global $con;
+      $ip = getIp();
+      $get_items = "SELECT * FROM cart WHERE ip_add = '$ip'";
+      $run_items = mysqli_query($con, $get_items);
+      $count_items = mysqli_num_rows($run_items);
+    }
+    echo $count_items;
+  }
+
+  //Getting total price for Cart
+  function total_price() {
+    $total = 0;
+    global $con;
+    $ip = getIp();
+    $sel_price = "SELECT * FROM cart WHERE ip_add = '$ip'";
+    $run_price = mysqli_query($con, $sel_price);
+    while ($p_price = mysqli_fetch_array($run_price)) {
+      $pro_id = $p_price['p_id'];
+      $pro_price = "SELECT * FROM products WHERE product_id = '$pro_id'";
+      $run_pro_price = mysqli_query($con,$pro_price);
+      while ($pp_price = mysqli_fetch_array($run_pro_price)) {
+        $product_price = array($pp_price['product_price']);
+        $values = array_sum($product_price);
+        $total += $values;
+      }
+    }
+    echo "$".$total;
+  }
+
   //Getting the categories
   function getCats() {
     global $con;
@@ -34,7 +103,7 @@
     if (!isset($_GET['cat'])) {
       if (!isset($_GET['meat'])) {
        global $con;
-        $get_pro = "SELECT * FROM products order by RAND() LIMIT 0,9";
+        $get_pro = "SELECT * FROM products";
         $run_pro = mysqli_query($con, $get_pro);
           while ($row_pro = mysqli_fetch_array($run_pro)) {
             $pro_id = $row_pro['product_id'];
@@ -47,9 +116,9 @@
             echo "
             <div id='single_product'><h3>$pro_title</h3>
               <img src='admin_area/product_images/$pro_image' width='200' height='180' />
-              <p><b>$$pro_price</b></p>
+              <p><b>Price: $$pro_price</b></p>
               <a href='details.php?pro_id=$pro_id' style='float:left;'>More info</a>
-              <a href='index.php?pro_id=$pro_id'><button style='float:right'>Order now</button></a>
+              <a href='index.php?add_cart=$pro_id'><button style='float:right'>Order now</button></a>
             </div>
             ";
         }
