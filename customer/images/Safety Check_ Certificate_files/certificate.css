@@ -1,0 +1,29 @@
+
+body {
+	background-color : #FFFFFF;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	font-style : normal;
+	font-weight : normal;
+	line-height : normal;
+	text-decoration : none;
+	color : #000000;
+}
+
+.certificatename {
+	font-size : 21px;
+	font-weight : bold;
+	color : #CC6600;	
+}
+
+.certificatetitle {
+	font-size : 15px;
+}
+
+.certificateemployer {
+	font-size : 10px;
+	padding-bottom : 0px;
+	padding-left : 5px;
+	padding-right : 0px;
+	padding-top : 5px;
+}
