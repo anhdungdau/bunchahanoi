@@ -1,40 +1,62 @@
-<!DOCTYPE html>
+<!DOCTYPE>
+
 <?php
-  include("includes/db.php");
+
+include("includes/db.php");
+
 ?>
 <html>
-  <head>
-  <meta charset="UTF-8">
-  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-  <script>tinymce.init({ selector:'textarea' });</script>
-    <title>Inserting Product</title>
-  </head>
+	<head>
+		<title>Inserting Product</title>
 
-  <body>
-    <form class="" action="insert_product.php" method="post" enctype="multipart/form-data">
-      <table align="center" width="800" border="2" bgcolor="orange">
+<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+<script>
+        tinymce.init({selector:'textarea'});
+</script>
+	</head>
 
-        <tr align="center">
-          <td colspan="8"><h2>Inserting form for new food or beverage</h2></td>
+<body bgcolor="skyblue">
+
+
+	<form action="insert_product.php" method="post" enctype="multipart/form-data">
+
+		<table align="center" width="795" border="2" bgcolor="#187eae">
+
+			<tr align="center">
+          <td colspan="7"><h2>Inserting form for new food or beverage</h2></td>
         </tr>
 
-        <tr>
-          <td align="right">Product Categories</td>
-          <td>
-            <select name="product_cat" required>
-              <option>Select a category</option>
-                <?php
-                  $get_cats = "SELECT * FROM categories";
-                  $run_cats = mysqli_query($con, $get_cats);
-                  while ($row_cats = mysqli_fetch_array($run_cats)) {
-                    $cat_id = $row_cats['cat_id'];
-                    $cat_title = $row_cats['cat_title'];
-                    echo "<option value='$cat_id'>$cat_title</option>";
-                  }
-                ?>
-            </select>
-          </td>
-        </tr>
+  			<tr>
+  				<td align="right"><b>Product Title:</b></td>
+  				<td><input type="text" name="product_title" size="60" required/></td>
+  			</tr>
+
+  			<tr>
+  				<td align="right"><b>Product Category:</b></td>
+  				<td>
+  				<select name="product_cat" >
+  					<option>Select a Category</option>
+  					<?php
+  		$get_cats = "select * from categories";
+
+  		$run_cats = mysqli_query($con, $get_cats);
+
+  		while ($row_cats=mysqli_fetch_array($run_cats)){
+
+  		$cat_id = $row_cats['cat_id'];
+  		$cat_title = $row_cats['cat_title'];
+
+  		echo "<option value='$cat_id'>$cat_title</option>";
+
+
+  	}
+
+  					?>
+  				</select>
+
+
+  				</td>
+  			</tr>
 
         <tr>
           <td align="right">Product Meat</td>

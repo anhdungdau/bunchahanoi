@@ -78,7 +78,6 @@
 					<li><a href="my_account.php?my_orders">My Orders</a></li>
 					<li><a href="my_account.php?edit_account">Edit Account</a></li>
 					<li><a href="my_account.php?change_pass">Change Password</a></li>
-					<li><a href="my_account.php?delete_account">Delete Account</a></li>
 					<li><a href="logout.php">Logout</a></li>
 
 					<ul>
@@ -116,13 +115,12 @@
 					if(!isset($_GET['my_orders'])) {
 						if(!isset($_GET['edit_account'])) {
 							if(!isset($_GET['change_pass'])) {
-								if(!isset($_GET['delete_account'])) {
 
 					echo "
 					<h2 style='padding:20px;'>Welcome:  $c_name </h2>
 
 					<b>You can see your orders cart by clicking this <a href='my_account.php?my_orders'>link</a></b>";
-								}
+
 							}
 						}
 					}
@@ -135,9 +133,6 @@
 						}
 						if(isset($_GET['change_pass'])){
 							include("change_pass.php");
-						}
-						if(isset($_GET['delete_account'])){
-							include("delete_account.php");
 						}
 
 					?>
