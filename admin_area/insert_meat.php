@@ -11,10 +11,10 @@
 include("includes/db.php");
 
 	if(isset($_POST['add_meat'])){
-	
+
 	$new_meat = $_POST['new_meat'];
 
-	$insert_meat = "insert into meats (meat_title) values ('$new_meat')";
+	$insert_meat = "INSERT into meats (meat_title) values ('$new_meat')";
 
 	$run_meat = mysqli_query($con, $insert_meat);
 

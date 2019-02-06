@@ -8,7 +8,7 @@ if(isset($_GET['edit_pro'])){
 
 	$get_id = $_GET['edit_pro'];
 
-	$get_pro = "select * from products where product_id='$get_id'";
+	$get_pro = "SELECT * from products where product_id='$get_id'";
 
 	$run_pro = mysqli_query($con, $get_pro);
 
@@ -25,7 +25,7 @@ if(isset($_GET['edit_pro'])){
 		$pro_cat = $row_pro['product_cat'];
 		$pro_meat = $row_pro['product_meat'];
 
-		$get_cat = "select * from categories where cat_id='$pro_cat'";
+		$get_cat = "SELECT * from categories where cat_id='$pro_cat'";
 
 		$run_cat=mysqli_query($con, $get_cat);
 
@@ -33,7 +33,7 @@ if(isset($_GET['edit_pro'])){
 
 		$category_title = $row_cat['cat_title'];
 
-		$get_meat = "select * from meats where meat_id='$pro_meat'";
+		$get_meat = "SELECT * from meats where meat_id='$pro_meat'";
 
 		$run_meat=mysqli_query($con, $get_meat);
 
@@ -101,7 +101,7 @@ if(isset($_GET['edit_pro'])){
 				<select name="product_meat" >
 					<option><?php echo $meat_title; ?></option>
 					<?php
-		$get_meats = "select * from meats";
+		$get_meats = "SELECT * from meats";
 
 	$run_meats = mysqli_query($con, $get_meats);
 
