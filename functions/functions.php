@@ -1,6 +1,6 @@
 <?php
 
-  $con = mysqli_connect("heroku_49a2ff63108d5d8","b28e95b30411f5","1e96bb5c","ecommerce");
+  $con = mysqli_connect("us-cdbr-iron-east-03.cleardb.net","b28e95b30411f5","1e96bb5c","ecommerce");
 
   if (mysqli_connect_errno()) {
     echo "Fail to connect to mysql: ".mysqli_connect_error();
