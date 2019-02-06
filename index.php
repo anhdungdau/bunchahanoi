@@ -114,7 +114,7 @@
         </div>
 
         <div id="footer">
-          <h4 style="text-align:center; padding-top: 15px;">&copy;2019 by Dung Bean</h4>
+          <h4 style="text-align:center; padding-top: 15px;">Copyright &copy;2019 by Dung Bean</h4>
         </div>
 
       </div>
